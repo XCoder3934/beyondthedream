@@ -18,7 +18,7 @@ export function AuthModal({ open, intent, onClose }: AuthModalProps) {
   const [mode, setMode] = useState<"login" | "signup">("login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [role, setRole] = useState<"student" | "mentor">("student");
+  const [role, setRole] = useState<string>("student");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -114,7 +114,7 @@ export function AuthModal({ open, intent, onClose }: AuthModalProps) {
           <form onSubmit={handleEmailAuth} className="space-y-3">
             {mode === "signup" && (
               <div className="grid grid-cols-2 gap-2">
-                {(["student", "mentor"] as const).map((option) => (
+                {(["öğrenci", "mentör"] as const).map((option) => (
                   <button
                     key={option}
                     type="button"

@@ -5,7 +5,7 @@ export default function Home() {
     <div className="animate-fade-in">
       <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:py-28">
         <div className="max-w-2xl">
-          <p className="text-sm font-medium text-accent">Gönüllü mentörlük</p>
+          <p className="text-sm font-medium text-accent"></p>
           <h1 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
             Potansiyelinize inanan bir mentör bulun
           </h1>

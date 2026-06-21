@@ -71,7 +71,7 @@ export function MentorApplyModal({ open, onClose, onSuccess }: MentorApplyModalP
         onClick={onClose}
       />
       <div className="relative max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-2xl border border-border bg-surface p-6 shadow-xl animate-fade-in">
-        <h2 className="text-xl font-semibold tracking-tight">Mentor Olun</h2>
+        <h2 className="text-xl font-semibold tracking-tight">Mentör Olun</h2>
         <p className="mt-1 text-sm text-muted-foreground">
           Uzmanlığınızı paylaşın ve öğrencilerin gelişmesine yardımcı olun.
         </p>

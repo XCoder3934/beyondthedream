@@ -28,7 +28,7 @@ export function MentorsView({ mentors }: MentorsViewProps) {
           {mentors.length} gönüllü yardım etmeye hazır
         </p>
         <Button variant="secondary" onClick={() => setApplyOpen(true)}>
-          Mentor Olun
+          Mentör Olun
         </Button>
       </div>
 
@@ -36,7 +36,7 @@ export function MentorsView({ mentors }: MentorsViewProps) {
         <div className="mt-10 rounded-2xl border border-dashed border-border p-10 text-center">
           <p className="text-muted-foreground">Henüz mentor yok. Katılan ilk kişi olun.</p>
           <Button className="mt-4" onClick={() => setApplyOpen(true)}>
-            Mentor Olun
+            Mentör Olun
           </Button>
         </div>
       ) : (

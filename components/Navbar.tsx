@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { useTheme } from "next-themes";
+import { Sun, Moon, Search } from "lucide-react";
 import { useAuth } from "@/components/AuthProvider";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
@@ -47,6 +49,15 @@ export function Navbar() {
         </nav>
 
         <div className="hidden items-center gap-2 md:flex">
+          <div className="relative mr-2">
+            <Search className="absolute left-2.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+            <input
+              type="search"
+              placeholder="Ara..."
+              className="h-9 w-48 rounded-md border border-border bg-muted/50 pl-9 pr-3 text-sm outline-none transition-colors focus:border-accent focus:bg-surface"
+            />
+          </div>
+          <ThemeToggle />
           <Button
             variant="secondary"
             size="sm"
@@ -82,6 +93,17 @@ export function Navbar() {
 
       {mobileOpen && (
         <div className="border-t border-border px-4 py-4 md:hidden animate-fade-in">
+          <div className="mb-4 flex items-center gap-2">
+            <div className="relative flex-1">
+              <Search className="absolute left-2.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+              <input
+                type="search"
+                placeholder="Ara..."
+                className="h-9 w-full rounded-md border border-border bg-muted/50 pl-9 pr-3 text-sm outline-none transition-colors focus:border-accent focus:bg-surface"
+              />
+            </div>
+            <ThemeToggle />
+          </div>
           <nav className="flex flex-col gap-1">
             {links.map((link) => (
               <Link
@@ -120,5 +142,20 @@ export function Navbar() {
         </div>
       )}
     </header>
+  );
+}
+
+function ThemeToggle() {
+  const { resolvedTheme, setTheme } = useTheme();
+
+  return (
+    <button
+      onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
+      className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-border bg-surface text-muted-foreground hover:bg-muted hover:text-foreground"
+      aria-label="Tema değiştir"
+    >
+      <Sun className="h-4 w-4 scale-100 dark:scale-0 transition-transform" />
+      <Moon className="absolute h-4 w-4 scale-0 dark:scale-100 transition-transform" />
+    </button>
   );
 }
