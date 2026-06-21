@@ -1,56 +1,49 @@
 # Progress
 
 ## Current Status
-**Phase: Planning complete — implementation not started**
+**Phase: Scaffold complete — ready for Supabase configuration**
 
-Memory bank created from product specification. Repository has no application code yet.
+Next.js app built and passing production build. Core UI and logic in place; needs real backend credentials to go live.
 
 ## What Works
 - [x] Product specification documented
-- [x] Memory bank initialized (6 core files)
-- [x] Git repository initialized
+- [x] Memory bank initialized
+- [x] Next.js 16 + TypeScript strict + Tailwind v4 scaffold
+- [x] Root layout with Navbar + Footer
+- [x] Home, Mentors, Match, About pages
+- [x] Privacy / Terms placeholder pages
+- [x] MentorCard, MentorModal, MentorsView
+- [x] MatchForm with inline ranked results
+- [x] AuthModal (Google + email signup/login)
+- [x] MentorApplyModal (Supabase insert)
+- [x] Contact form in footer (client-side submit ack)
+- [x] Rule-based matching algorithm
+- [x] PostHog analytics helper (4 events)
+- [x] Supabase client/server + middleware + auth callback
+- [x] SQL migration for mentors + profiles
+- [x] Sample mentor fallback for local dev
+- [x] Production build passes
 
 ## What's Left to Build
 
-### Foundation
-- [ ] Scaffold Next.js 16 + TypeScript strict + Tailwind v4
-- [ ] Supabase project setup and schema migration
-- [ ] Environment configuration
-- [ ] Root layout with design system tokens
+### Configuration
+- [ ] Supabase project + `.env.local` credentials
+- [ ] Run database migration
+- [ ] Enable Google OAuth in Supabase
+- [ ] PostHog key (optional)
+- [ ] Real donation URL
 
-### Shared UI
-- [ ] Navbar (desktop + mobile hamburger)
-- [ ] Footer with contact form
-- [ ] Auth modal (Google + email, role assignment)
-- [ ] Donation external link
-
-### Mentors Feature
-- [ ] Supabase mentors table + seed data (optional)
-- [ ] Mentors page with responsive grid
-- [ ] MentorCard component
-- [ ] MentorModal component
-- [ ] Mentor application modal ("Become a Mentor")
-- [ ] PostHog: `mentor_view`, `mentor_apply_click`
-
-### Match Feature
-- [ ] Match page
-- [ ] MatchForm component
-- [ ] Rule-based matching logic
-- [ ] Inline ranked results display
-- [ ] PostHog: `match_submit`
-
-### Pages
-- [ ] Home (landing + explanation)
-- [ ] About
-- [ ] Privacy Policy / Terms (footer links — content TBD)
-
-### Auth & Analytics
-- [ ] Supabase Auth integration
-- [ ] Role assignment after signup
-- [ ] PostHog: `user_signup`
+### Polish & Integration
+- [ ] End-to-end auth testing with Supabase
+- [ ] Contact form backend/storage
+- [ ] Privacy Policy / Terms content
+- [ ] Remove sample mentor fallback once DB is seeded (optional)
+- [ ] Migrate middleware to Next.js 16 proxy convention (deprecation warning)
 
 ## Known Issues
-- None — greenfield project
+- Next.js 16 warns middleware convention is deprecated in favor of "proxy"
+- Contact form has no backend — shows thank-you message only
+- Auth/signup requires Supabase env vars to function
 
 ## Evolution of Decisions
 | Date | Decision |
@@ -61,3 +54,4 @@ Memory bank created from product specification. Repository has no application co
 | 2026-06-21 | Rule-based matching only |
 | 2026-06-21 | Contact form in footer, not a page |
 | 2026-06-21 | PostHog limited to 4 events, no dashboards |
+| 2026-06-21 | App scaffolded with sample mentor fallback for dev |
