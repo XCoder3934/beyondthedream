@@ -52,7 +52,7 @@ export function MatchForm({ mentors }: MatchFormProps) {
       <form onSubmit={handleSubmit} className="space-y-4 rounded-2xl border border-border bg-surface p-6">
         <div>
           <label htmlFor="age" className="mb-1.5 block text-sm font-medium">
-            Age
+            Yaş
           </label>
           <input
             id="age"
@@ -63,13 +63,13 @@ export function MatchForm({ mentors }: MatchFormProps) {
             value={age}
             onChange={(e) => setAge(e.target.value)}
             className="field-input"
-            placeholder="Your age"
+            placeholder="Yaşınız"
           />
         </div>
 
         <div>
           <label htmlFor="interests" className="mb-1.5 block text-sm font-medium">
-            Interests
+            İlgi Alanları
           </label>
           <input
             id="interests"
@@ -77,14 +77,14 @@ export function MatchForm({ mentors }: MatchFormProps) {
             value={interestsInput}
             onChange={(e) => setInterestsInput(e.target.value)}
             className="field-input"
-            placeholder="e.g. Python, Biology, Creative Writing"
+            placeholder="örn. Python, Biyoloji, Yaratıcı Yazarlık"
           />
-          <p className="mt-1 text-xs text-muted-foreground">Separate with commas</p>
+          <p className="mt-1 text-xs text-muted-foreground">Virgülle ayırın</p>
         </div>
 
         <div>
           <label htmlFor="goals" className="mb-1.5 block text-sm font-medium">
-            Goals
+            Hedefler
           </label>
           <textarea
             id="goals"
@@ -93,21 +93,21 @@ export function MatchForm({ mentors }: MatchFormProps) {
             value={goals}
             onChange={(e) => setGoals(e.target.value)}
             className="field-input resize-none"
-            placeholder="What do you hope to achieve with a mentor?"
+            placeholder="Mentörünüzle birlikte neler başarmayı umuyorsunuz?"
           />
         </div>
 
         <Button type="submit" className="w-full sm:w-auto">
-          Find matches
+          Eşleşmeleri bul
         </Button>
       </form>
 
       {submitted && (
         <section className="animate-fade-in space-y-4">
-          <h2 className="text-xl font-semibold tracking-tight">Your matches</h2>
+          <h2 className="text-xl font-semibold tracking-tight">Eşleşmeleriniz</h2>
           {results.length === 0 ? (
             <p className="text-sm text-muted-foreground">
-              No strong matches yet. Try broadening your interests or browse all mentors.
+              Henüz güçlü bir eşleşme yok. İlgi alanlarınızı genişletmeyi deneyin veya tüm mentörlere göz atın.
             </p>
           ) : (
             <div className="grid gap-4 sm:grid-cols-2">
@@ -122,7 +122,7 @@ export function MatchForm({ mentors }: MatchFormProps) {
                       <p className="text-xs text-muted-foreground">{mentor.category}</p>
                     </div>
                     <span className="rounded-full bg-accent/10 px-2 py-0.5 text-xs font-medium text-accent">
-                      {score} pts
+                      {score} puan
                     </span>
                   </div>
                   <p className="mt-3 line-clamp-2 text-sm text-muted-foreground">
@@ -130,7 +130,7 @@ export function MatchForm({ mentors }: MatchFormProps) {
                   </p>
                   {matchedSkills.length > 0 && (
                     <p className="mt-3 text-xs text-muted-foreground">
-                      Matched: {matchedSkills.join(", ")}
+                      Eşleşen: {matchedSkills.join(", ")}
                     </p>
                   )}
                 </article>

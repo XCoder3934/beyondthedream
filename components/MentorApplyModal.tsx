@@ -71,22 +71,22 @@ export function MentorApplyModal({ open, onClose, onSuccess }: MentorApplyModalP
         onClick={onClose}
       />
       <div className="relative max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-2xl border border-border bg-surface p-6 shadow-xl animate-fade-in">
-        <h2 className="text-xl font-semibold tracking-tight">Become a Mentor</h2>
+        <h2 className="text-xl font-semibold tracking-tight">Mentor Olun</h2>
         <p className="mt-1 text-sm text-muted-foreground">
-          Share your expertise and help students grow.
+          Uzmanlığınızı paylaşın ve öğrencilerin gelişmesine yardımcı olun.
         </p>
 
         <form onSubmit={handleSubmit} className="mt-6 space-y-3">
-          <input name="name" required placeholder="Full name" className="field-input" />
+          <input name="name" required placeholder="Ad Soyad" className="field-input" />
           <textarea
             name="bio"
             required
             rows={4}
-            placeholder="Tell students about your background"
+            placeholder="Öğrencilere geçmişinizden bahsedin"
             className="field-input resize-none"
           />
           <select name="category" required className="field-input">
-            <option value="">Select category</option>
+            <option value="">Kategori seçin</option>
             {MENTOR_CATEGORIES.map((category) => (
               <option key={category} value={category}>
                 {category}
@@ -97,16 +97,16 @@ export function MentorApplyModal({ open, onClose, onSuccess }: MentorApplyModalP
             value={skillsInput}
             onChange={(e) => setSkillsInput(e.target.value)}
             required
-            placeholder="Skills (comma-separated)"
+            placeholder="Yetenekler (virgülle ayrılmış)"
             className="field-input"
           />
-          <input name="email" type="email" required placeholder="Email" className="field-input" />
-          <input name="phone" type="tel" placeholder="Phone (optional)" className="field-input" />
+          <input name="email" type="email" required placeholder="E-posta" className="field-input" />
+          <input name="phone" type="tel" placeholder="Telefon (isteğe bağlı)" className="field-input" />
 
           {error && <p className="text-sm text-red-600">{error}</p>}
 
           <Button type="submit" className="w-full" disabled={loading}>
-            {loading ? "Submitting…" : "Submit application"}
+            {loading ? "Gönderiliyor…" : "Başvuruyu gönder"}
           </Button>
         </form>
       </div>

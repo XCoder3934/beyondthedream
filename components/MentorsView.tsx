@@ -25,18 +25,18 @@ export function MentorsView({ mentors }: MentorsViewProps) {
     <>
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-sm text-muted-foreground">
-          {mentors.length} volunteer{mentors.length === 1 ? "" : "s"} ready to help
+          {mentors.length} gönüllü yardım etmeye hazır
         </p>
         <Button variant="secondary" onClick={() => setApplyOpen(true)}>
-          Become a Mentor
+          Mentor Olun
         </Button>
       </div>
 
       {mentors.length === 0 ? (
         <div className="mt-10 rounded-2xl border border-dashed border-border p-10 text-center">
-          <p className="text-muted-foreground">No mentors yet. Be the first to join.</p>
+          <p className="text-muted-foreground">Henüz mentor yok. Katılan ilk kişi olun.</p>
           <Button className="mt-4" onClick={() => setApplyOpen(true)}>
-            Become a Mentor
+            Mentor Olun
           </Button>
         </div>
       ) : (

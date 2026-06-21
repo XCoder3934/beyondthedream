@@ -49,7 +49,7 @@ export function MentorModal({ mentor, onClose }: MentorModalProps) {
         <p className="mt-6 text-sm leading-relaxed text-muted-foreground">{mentor.bio}</p>
 
         <div className="mt-6">
-          <h3 className="text-sm font-medium">Skills</h3>
+          <h3 className="text-sm font-medium">Yetenekler</h3>
           <div className="mt-2 flex flex-wrap gap-2">
             {mentor.skills.map((skill) => (
               <span
@@ -64,10 +64,10 @@ export function MentorModal({ mentor, onClose }: MentorModalProps) {
 
         <div className="mt-8 flex gap-3">
           <Button onClick={handleApply} className="flex-1">
-            Apply as Student
+            Öğrenci olarak başvur
           </Button>
           <Button variant="secondary" onClick={onClose}>
-            Close
+            Kapat
           </Button>
         </div>
       </div>

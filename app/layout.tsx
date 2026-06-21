@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     template: "%s · Beyond the Dream",
   },
   description:
-    "A volunteer mentorship platform connecting students with mentors across STEM, Arts, Languages, and Social Sciences.",
+    "Öğrencileri STEM, Sanat, Diller ve Sosyal Bilimler alanlarında mentörlerle buluşturan bir gönüllü mentörlük platformu.",
 };
 
 export default function RootLayout({

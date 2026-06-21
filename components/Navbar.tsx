@@ -8,10 +8,10 @@ import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 
 const links = [
-  { href: "/", label: "Home" },
-  { href: "/mentors", label: "Mentors" },
-  { href: "/match", label: "Match" },
-  { href: "/about", label: "About" },
+  { href: "/", label: "Ana Sayfa" },
+  { href: "/mentors", label: "Mentörler" },
+  { href: "/match", label: "Eşleşme" },
+  { href: "/about", label: "Hakkında" },
 ];
 
 export function Navbar() {
@@ -52,7 +52,7 @@ export function Navbar() {
             size="sm"
             onClick={() => openAuth("login")}
           >
-            Login
+            Giriş yap
           </Button>
           <a
             href={donationUrl}
@@ -60,7 +60,7 @@ export function Navbar() {
             rel="noopener noreferrer"
             className="inline-flex h-9 items-center justify-center rounded-lg bg-accent px-4 text-sm font-medium text-accent-foreground shadow-sm transition-all hover:bg-accent/90"
           >
-            Support
+            Destek Ol
           </a>
         </div>
 
@@ -71,7 +71,7 @@ export function Navbar() {
           aria-expanded={mobileOpen}
           onClick={() => setMobileOpen((v) => !v)}
         >
-          <span className="sr-only">Menu</span>
+          <span className="sr-only">Menü</span>
           <div className="flex flex-col gap-1.5">
             <span className="block h-0.5 w-5 bg-foreground" />
             <span className="block h-0.5 w-5 bg-foreground" />
@@ -106,7 +106,7 @@ export function Navbar() {
               }}
               className="rounded-md px-3 py-2 text-left text-sm text-muted-foreground"
             >
-              Login
+              Giriş yap
             </button>
             <a
               href={donationUrl}
@@ -114,7 +114,7 @@ export function Navbar() {
               rel="noopener noreferrer"
               className="rounded-md px-3 py-2 text-sm text-accent"
             >
-              Support
+              Destek
             </a>
           </nav>
         </div>
