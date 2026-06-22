@@ -71,7 +71,7 @@ export function Footer() {
           </nav>
 
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Beyond the Dream. All rights reserved.
+            © {new Date().getFullYear()} Beyond the Dream. Tüm hakları saklıdır.
           </p>
         </div>
       </div>
