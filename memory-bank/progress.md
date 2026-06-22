@@ -27,16 +27,16 @@ Next.js app built and passing production build. Core UI and logic in place; need
 ## What's Left to Build
 
 ### Configuration
-- [ ] Supabase project + `.env.local` credentials
+- [x] Supabase project + `.env.local` credentials
 - [ ] Run database migration
-- [ ] Enable Google OAuth in Supabase
-- [ ] PostHog key (optional)
+- [x] Enable Google OAuth in Supabase
+- [x] PostHog key (optional)
 - [ ] Real donation URL
 
 ### Polish & Integration
 - [ ] End-to-end auth testing with Supabase
 - [ ] Contact form backend/storage
-- [ ] Privacy Policy / Terms content
+- [x] Privacy Policy / Terms content
 - [ ] Remove sample mentor fallback once DB is seeded (optional)
 - [ ] Migrate middleware to Next.js 16 proxy convention (deprecation warning)
 

@@ -27,8 +27,9 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
-        <Link href="/" className="text-lg font-semibold tracking-tight">
-          Beyond the Dream
+        <Link href="/" className="flex items-center" aria-label="Beyond the Dream">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/logo.png" alt="Beyond the Dream" className="h-12 w-auto rounded-full" />
         </Link>
 
         <nav className="hidden items-center gap-1 md:flex">
