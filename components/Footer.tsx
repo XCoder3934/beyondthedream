@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ContactForm } from "@/components/ContactForm";
+import { FaInstagram } from "react-icons/fa"; // Import the icon
 
 const footerLinks = [
   { href: "/about", label: "Hakkında" },
@@ -20,7 +21,7 @@ export function Footer() {
         </div>
 
         <div className="flex flex-col justify-between gap-8">
-          <nav className="flex flex-wrap gap-x-6 gap-y-2">
+          <nav className="flex flex-wrap items-center gap-x-6 gap-y-2">
             {footerLinks.map((link) => (
               <Link
                 key={link.href}
@@ -30,7 +31,20 @@ export function Footer() {
                 {link.label}
               </Link>
             ))}
+
+
+            <Link
+              href="https://www.instagram.com/beyond.the_dream?igsh=MXFpdnd6Y3RsMXFyMQ=="
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-all duration-300"
+            >
+              <FaInstagram
+                className="block w-5 h-5 text-gray-900 dark:text-gray-100 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-tr hover:from-purple-500 hover:via-pink-500 hover:to-orange-500"
+              />
+            </Link>
           </nav>
+
           <p className="text-sm text-muted-foreground">
             © {new Date().getFullYear()} Beyond the Dream. Tüm hakları saklıdır.
           </p>

@@ -27,7 +27,7 @@ export function MentorsView({ mentors }: MentorsViewProps) {
         <p className="text-sm text-muted-foreground">
           {mentors.length} gönüllü yardım etmeye hazır
         </p>
-        <Button variant="secondary" onClick={() => setApplyOpen(true)}>
+        <Button variant="secondary" href="https://docs.google.com/forms/d/e/1FAIpQLSfjZfc04AxlYy97Igedx7VhgZhMXZkh3J7LoZaBDqdNH1QiYA/viewform?usp=sharing&ouid=113150891458441532903" target="_blank" rel="noopener noreferrer">
           Mentör Olun
         </Button>
       </div>
@@ -35,7 +35,7 @@ export function MentorsView({ mentors }: MentorsViewProps) {
       {mentors.length === 0 ? (
         <div className="mt-10 rounded-2xl border border-dashed border-border p-10 text-center">
           <p className="text-muted-foreground">Henüz mentor yok. Katılan ilk kişi olun.</p>
-          <Button className="mt-4" onClick={() => setApplyOpen(true)}>
+          <Button className="mt-4" href="https://docs.google.com/forms/d/e/1FAIpQLSfjZfc04AxlYy97Igedx7VhgZhMXZkh3J7LoZaBDqdNH1QiYA/viewform?usp=sharing&ouid=113150891458441532903" target="_blank" rel="noopener noreferrer">
             Mentör Olun
           </Button>
         </div>

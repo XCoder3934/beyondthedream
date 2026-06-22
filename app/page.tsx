@@ -57,7 +57,7 @@ export default function Home() {
           <p className="mt-3 max-w-xl text-muted-foreground">
             Gönüllüler bu platformu mümkün kılıyor. Mentör olmak için başvurun ve gelecek neslin kendi yolunu keşfetmesine yardımcı olun.
           </p>
-          <Button href="/mentors" variant="secondary" className="mt-6">
+          <Button href="https://docs.google.com/forms/d/e/1FAIpQLSfjZfc04AxlYy97Igedx7VhgZhMXZkh3J7LoZaBDqdNH1QiYA/viewform?usp=sharing&ouid=113150891458441532903" target="_blank" rel="noopener noreferrer" variant="secondary" className="mt-6">
             Mentör Olun
           </Button>
         </div>
