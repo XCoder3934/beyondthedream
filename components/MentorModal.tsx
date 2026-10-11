@@ -28,11 +28,13 @@ export function MentorModal({ mentor, onClose }: MentorModalProps) {
         className="absolute inset-0 bg-black/40 backdrop-blur-sm"
         onClick={onClose}
       />
-      <div className="relative max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-2xl border border-border bg-surface p-6 shadow-xl animate-fade-in">
+      <div className="glass-panel relative max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-[2rem] p-6 shadow-2xl animate-fade-in sm:p-8">
+        <div className="absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-accent to-transparent" />
         <div className="flex items-start justify-between gap-4">
           <div>
             <h2 className="text-2xl font-semibold tracking-tight">{mentor.name}</h2>
-            <span className="mt-2 inline-flex rounded-full bg-accent/10 px-2.5 py-0.5 text-xs font-medium text-accent">
+            <span className="mt-2 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/10 px-3 py-1 text-xs font-semibold text-accent">
+              <span className="h-1.5 w-1.5 rounded-full bg-cyan" />
               {mentor.category}
             </span>
           </div>
@@ -41,7 +43,7 @@ export function MentorModal({ mentor, onClose }: MentorModalProps) {
             <img
               src={mentor.avatar}
               alt=""
-              className="h-16 w-16 rounded-full object-cover"
+              className="h-16 w-16 rounded-2xl border border-border object-cover shadow-lg"
             />
           )}
         </div>
@@ -54,7 +56,7 @@ export function MentorModal({ mentor, onClose }: MentorModalProps) {
             {mentor.skills.map((skill) => (
               <span
                 key={skill}
-                className="rounded-md bg-muted px-2.5 py-1 text-xs text-muted-foreground"
+                className="rounded-lg border border-border/70 bg-muted/60 px-3 py-1.5 text-xs text-muted-foreground"
               >
                 {skill}
               </span>

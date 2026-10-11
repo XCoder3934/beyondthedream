@@ -1,15 +1,9 @@
-import { NextResponse, type NextRequest } from "next/server";
-import { updateSession } from "@/lib/supabase/middleware";
+import { NextResponse } from "next/server";
 
-export async function middleware(request: NextRequest) {
-  if (
-    !process.env.NEXT_PUBLIC_SUPABASE_URL ||
-    !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-  ) {
-    return NextResponse.next();
-  }
-
-  return updateSession(request);
+export function middleware() {
+  // Public pages do not require server-side auth refresh; the browser client
+  // refreshes sessions when authenticated actions are used.
+  return NextResponse.next();
 }
 
 export const config = {

@@ -1,14 +1,16 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fafafa;
-  --foreground: #0f172a;
+  --background: #f5f7fc;
+  --foreground: #10172b;
   --surface: #ffffff;
-  --muted: #f1f5f9;
-  --muted-foreground: #64748b;
-  --border: #e2e8f0;
-  --accent: #4f46e5;
+  --muted: #edf1f8;
+  --muted-foreground: #69758f;
+  --border: #dce3ef;
+  --accent: #5548e8;
   --accent-foreground: #ffffff;
+  --cyan: #0da9bd;
+  --violet: #7964ee;
 }
 
 @theme inline {
@@ -20,32 +22,92 @@
   --color-border: var(--border);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-cyan: var(--cyan);
+  --color-violet: var(--violet);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 .dark {
-  --background: #09090b;
-  --foreground: #f4f4f5;
-  --surface: #18181b;
-  --muted: #27272a;
-  --muted-foreground: #a1a1aa;
-  --border: #3f3f46;
-  --accent: #818cf8;
-  --accent-foreground: #09090b;
+  --background: #080d19;
+  --foreground: #f2f6ff;
+  --surface: #101829;
+  --muted: #141f33;
+  --muted-foreground: #9ba9c2;
+  --border: #24314a;
+  --accent: #9690ff;
+  --accent-foreground: #0b1020;
+  --cyan: #63d9e7;
+  --violet: #a899ff;
+}
+
+.instagram-mark {
+  stroke: #111827;
+}
+
+.dark .instagram-mark {
+  stroke: #ffffff;
+}
+
+a.group:hover .instagram-mark,
+a.group:focus-visible .instagram-mark {
+  stroke: url("#insta-gradient");
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
+  background-image:
+    radial-gradient(ellipse at 12% -10%, color-mix(in srgb, var(--accent) 8%, transparent), transparent 34rem),
+    radial-gradient(ellipse at 95% 12%, color-mix(in srgb, var(--cyan) 5%, transparent), transparent 30rem);
   color: var(--foreground);
   font-family: var(--font-geist-sans), system-ui, sans-serif;
 }
 
+::selection {
+  background: color-mix(in srgb, var(--accent) 28%, transparent);
+}
+
+.tech-grid {
+  position: relative;
+  isolation: isolate;
+}
+
+.tech-grid::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, color-mix(in srgb, var(--foreground) 4%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--foreground) 4%, transparent) 1px, transparent 1px);
+  background-size: 54px 54px;
+  mask-image: linear-gradient(to bottom, black, transparent 88%);
+  content: "";
+  pointer-events: none;
+}
+
+.glass-panel {
+  border: 1px solid color-mix(in srgb, var(--border) 80%, transparent);
+  background: color-mix(in srgb, var(--surface) 78%, transparent);
+  box-shadow: 0 24px 80px -42px color-mix(in srgb, var(--accent) 36%, transparent);
+  backdrop-filter: blur(18px);
+}
+
+.text-gradient {
+  background: linear-gradient(105deg, var(--foreground) 10%, var(--accent) 58%, var(--cyan));
+  background-clip: text;
+  color: transparent;
+}
+
+.dark .text-gradient {
+  background-image: linear-gradient(105deg, #ffffff 5%, #bbb8ff 53%, #70e1ed 100%);
+}
+
 .field-input {
   width: 100%;
-  border-radius: 0.625rem;
+  min-height: 2.9rem;
+  border-radius: 0.9rem;
   border: 1px solid var(--border);
-  background: var(--surface);
+  background: color-mix(in srgb, var(--surface) 92%, var(--muted));
   padding: 0.625rem 0.875rem;
   font-size: 0.875rem;
   color: var(--foreground);
@@ -71,6 +133,72 @@ body {
 
 .animate-fade-in {
   animation: fade-in 0.25s ease-out;
+}
+
+@keyframes discovery-core-motion {
+  0%, 100% {
+    transform: scale(1) translateY(0);
+    box-shadow: 0 12px 28px -18px color-mix(in srgb, var(--accent) 38%, transparent);
+  }
+  45% {
+    transform: scale(1.045) translateY(-5px);
+    box-shadow: 0 24px 48px -22px color-mix(in srgb, var(--accent) 58%, transparent);
+  }
+  72% { transform: scale(0.99) translateY(1px); }
+}
+
+@keyframes discovery-card-one-motion {
+  0%, 100% { transform: translate(0, 0) rotate(0); }
+  42% { transform: translate(7px, -12px) rotate(1.2deg); }
+  72% { transform: translate(-2px, 3px) rotate(-0.4deg); }
+}
+
+@keyframes discovery-card-two-motion {
+  0%, 100% { transform: translate(0, 0) rotate(0); }
+  38% { transform: translate(-9px, -8px) rotate(-1.4deg); }
+  70% { transform: translate(3px, 4px) rotate(0.5deg); }
+}
+
+@keyframes discovery-card-three-motion {
+  0%, 100% { transform: translate(0, 0) rotate(0); }
+  44% { transform: translate(4px, -11px) rotate(0.8deg); }
+  74% { transform: translate(-5px, 3px) rotate(-0.7deg); }
+}
+
+.discovery-core {
+  animation: discovery-core-motion 2.8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+.discovery-card-one {
+  animation: discovery-card-one-motion 2.6s cubic-bezier(0.45, 0, 0.55, 1) 0.12s infinite;
+}
+
+.discovery-card-two {
+  animation: discovery-card-two-motion 3.1s cubic-bezier(0.45, 0, 0.55, 1) 0.35s infinite;
+}
+
+.discovery-card-three {
+  animation: discovery-card-three-motion 2.8s cubic-bezier(0.45, 0, 0.55, 1) 0.22s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+html[data-reduced-motion] *,
+html[data-reduced-motion] *::before,
+html[data-reduced-motion] *::after {
+  scroll-behavior: auto !important;
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
 }
 
 .line-clamp-2 {

@@ -35,7 +35,8 @@ Next.js app built and passing production build. Core UI and logic in place; need
 
 ### Polish & Integration
 - [ ] End-to-end auth testing with Supabase
-- [ ] Contact form backend/storage
+- [x] Contact form stores submissions in Supabase
+- [ ] Finish contact email notifications: configure Resend API key and verified sender domain
 - [x] Privacy Policy / Terms content
 - [ ] Remove sample mentor fallback once DB is seeded (optional)
 - [ ] Migrate middleware to Next.js 16 proxy convention (deprecation warning)

@@ -36,9 +36,10 @@ export async function getMentors(): Promise<Mentor[]> {
   try {
     const supabase = await createClient();
     const { data, error } = await supabase
-      .from("mentors")
-      .select("*")
-      .order("created_at", { ascending: false });
+      .from("public_mentors")
+      .select("id, name, bio, category, skills, avatar, created_at")
+      .order("created_at", { ascending: false })
+      .abortSignal(AbortSignal.timeout(2500));
 
     if (error || !data?.length) return SAMPLE_MENTORS;
     return data as Mentor[];

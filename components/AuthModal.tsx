@@ -5,6 +5,7 @@ import { createClient } from "@/lib/supabase/client";
 import { trackEvent } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
+import type { UserRole } from "@/types/mentor";
 
 type AuthIntent = "login" | "apply" | "match" | "become-mentor";
 
@@ -12,15 +13,17 @@ interface AuthModalProps {
   open: boolean;
   intent: AuthIntent;
   onClose: () => void;
+  onAuthenticated: () => void;
 }
 
-export function AuthModal({ open, intent, onClose }: AuthModalProps) {
+export function AuthModal({ open, intent, onClose, onAuthenticated }: AuthModalProps) {
   const [mode, setMode] = useState<"login" | "signup">("login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [role, setRole] = useState<string>("student");
+  const [role, setRole] = useState<UserRole>("student");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [notice, setNotice] = useState<string | null>(null);
 
   if (!open) return null;
 
@@ -28,11 +31,12 @@ export function AuthModal({ open, intent, onClose }: AuthModalProps) {
     e.preventDefault();
     setLoading(true);
     setError(null);
+    setNotice(null);
 
     const supabase = createClient();
 
     if (mode === "signup") {
-      const { error: signUpError } = await supabase.auth.signUp({
+      const { data, error: signUpError } = await supabase.auth.signUp({
         email,
         password,
         options: { data: { role } },
@@ -43,6 +47,11 @@ export function AuthModal({ open, intent, onClose }: AuthModalProps) {
         return;
       }
       trackEvent("user_signup", { role, intent });
+      if (!data.session) {
+        setNotice("Kayıt tamamlandı. Devam etmek için e-posta adresinizi doğrulayın ve giriş yapın.");
+        setLoading(false);
+        return;
+      }
     } else {
       const { error: signInError } = await supabase.auth.signInWithPassword({
         email,
@@ -56,16 +65,20 @@ export function AuthModal({ open, intent, onClose }: AuthModalProps) {
     }
 
     setLoading(false);
-    onClose();
+    onAuthenticated();
   }
 
   async function handleGoogleAuth() {
     setLoading(true);
     setError(null);
+    setNotice(null);
     const supabase = createClient();
+    const next = intent === "match" ? "/match?resumeMatch=1" : "/";
     const { error: oauthError } = await supabase.auth.signInWithOAuth({
       provider: "google",
-      options: { redirectTo: `${window.location.origin}/auth/callback` },
+      options: {
+        redirectTo: `${window.location.origin}/auth/callback?next=${encodeURIComponent(next)}`,
+      },
     });
     if (oauthError) {
       setError(oauthError.message);
@@ -114,19 +127,22 @@ export function AuthModal({ open, intent, onClose }: AuthModalProps) {
           <form onSubmit={handleEmailAuth} className="space-y-3">
             {mode === "signup" && (
               <div className="grid grid-cols-2 gap-2">
-                {(["öğrenci", "mentör"] as const).map((option) => (
+                {([
+                  { value: "student", label: "öğrenci" },
+                  { value: "mentor", label: "mentör" },
+                ] as const).map((option) => (
                   <button
-                    key={option}
+                    key={option.value}
                     type="button"
-                    onClick={() => setRole(option)}
+                    onClick={() => setRole(option.value)}
                     className={cn(
                       "rounded-lg border px-3 py-2 text-sm capitalize transition-colors",
-                      role === option
+                      role === option.value
                         ? "border-accent bg-accent/10 text-foreground"
                         : "border-border text-muted-foreground",
                     )}
                   >
-                    {option}
+                    {option.label}
                   </button>
                 ))}
               </div>
@@ -151,6 +167,7 @@ export function AuthModal({ open, intent, onClose }: AuthModalProps) {
             />
 
             {error && <p className="text-sm text-red-600">{error}</p>}
+            {notice && <p role="status" className="text-sm text-muted-foreground">{notice}</p>}
 
             <Button type="submit" className="w-full" disabled={loading}>
               {loading ? "Lütfen bekleyin…" : mode === "login" ? "Giriş yap" : "Kayıt ol"}

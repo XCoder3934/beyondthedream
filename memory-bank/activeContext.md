@@ -20,7 +20,7 @@
 3. Enable Google OAuth provider in Supabase dashboard
 4. Configure PostHog key (optional)
 5. Set `NEXT_PUBLIC_DONATION_URL` to real external link
-6. Wire contact form to backend or email service (currently client-only thank-you)
+6. Finish Resend setup for contact notifications (verify sender domain and add production secrets)
 7. Test auth flows end-to-end with real Supabase
 8. Replace Privacy/Terms placeholder content
 
@@ -42,3 +42,19 @@
 - Donation URL destination
 - Contact form submission backend (email service vs Supabase table)
 - Privacy/Terms legal content source
+
+## Recent Account UI Update (2026-10-11)
+- AuthProvider loads the current Supabase user and tracks auth state changes.
+- The navbar shows a profile avatar that opens account settings; sign-out is inside the menu.
+- Account settings support display name and profile photo updates; the photo itself opens the file picker on hover/click.
+- Password and email changes use separate dialogs. Theme remains available in the navbar only.
+- Added a reduced-motion preference stored in the current browser.
+- Profile photos use a private `avatars` Storage bucket with per-user RLS policies; signed URLs expire after one hour.
+- Supabase migration `003_profile_avatars` was applied to the connected project.
+
+## Contact Email Notifications (2026-10-11)
+- The contact form writes submissions to the private, write-only `contact_submissions` table through `/api/contact`.
+- `/api/contact` now optionally sends a plain-text notification through the Resend API after the database insert succeeds.
+- Notifications go to `beyondthedream.information@gmail.com` by default; provider configuration uses server-only `RESEND_API_KEY` and `CONTACT_NOTIFICATION_FROM` variables.
+- Database receipt remains successful even when notification delivery is not configured or Resend is unavailable.
+- Finish setup by creating a Resend account, verifying a sender domain, and adding the required environment variables locally and in production.

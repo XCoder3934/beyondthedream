@@ -9,8 +9,8 @@ const footerLinks = [
 
 export function Footer() {
   return (
-    <footer className="mt-auto border-t border-border bg-muted/30">
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-2">
+    <footer className="mt-auto border-t border-border/70 bg-surface/45">
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[1.2fr_0.8fr] lg:px-8 lg:py-16">
 
         {/* Contact Section */}
         <div>
@@ -21,19 +21,18 @@ export function Footer() {
               href="https://www.instagram.com/beyond.the_dream?igsh=MXFpdnd6Y3RsMXFyMQ=="
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center transition-all duration-300 hover:scale-110"
+              className="group inline-flex h-10 w-10 items-center justify-center transition-transform duration-300 hover:scale-105"
               aria-label="Instagram"
             >
               <svg
-                width="24"
-                height="24"
+                width="27"
+                height="27"
                 viewBox="0 0 24 24"
                 fill="none"
                 strokeWidth="2.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                // stroke-slate-900: High contrast for light mode, white for dark mode
-                className="stroke-slate-900 dark:stroke-white transition-colors duration-300 group-hover:stroke-[url(#insta-gradient)]"
+                className="instagram-mark transition-colors duration-300 group-hover:stroke-[url(#insta-gradient)]"
               >
                 <defs>
                   <linearGradient id="insta-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -49,7 +48,7 @@ export function Footer() {
             </a>
           </div>
 
-          <p className="mt-2 max-w-md text-sm text-muted-foreground">
+          <p className="mt-2 max-w-md text-sm leading-6 text-muted-foreground">
             Mentörlük veya gönüllülük hakkında sorularınız mı var? Bize bir mesaj gönderin.
           </p>
 
@@ -57,13 +56,13 @@ export function Footer() {
         </div>
 
         {/* Navigation Section */}
-        <div className="flex flex-col justify-between gap-8">
-          <nav className="flex flex-wrap items-center gap-x-6 gap-y-2">
+        <div className="flex flex-col justify-between gap-8 lg:items-end">
+          <nav className="flex flex-wrap items-center gap-x-3 gap-y-2 lg:justify-end">
             {footerLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                className="rounded-lg px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-muted/70 hover:text-foreground"
               >
                 {link.label}
               </Link>

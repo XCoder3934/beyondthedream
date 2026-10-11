@@ -15,7 +15,7 @@ export default function TermsPage() {
 
         <section>
           <h2 className="text-xl font-bold text-foreground">2. Platformun Amacı ve Hizmet Kapsamı</h2>
-          <p className="mt-2">Platform, ilköğretim ve ortaöğretim öğrencileri ile mentörleri bir araya getiren bir sosyal sorumluluk projesidir. Sağlanan tüm içerikler ve mentörlük hizmetleri "olduğu gibi" sunulmaktadır. Platform, mentörler tarafından sağlanan bilgilerin doğruluğunu garanti etmez.</p>
+          <p className="mt-2">Platform, ilköğretim ve ortaöğretim öğrencileri ile mentörleri bir araya getiren bir sosyal sorumluluk projesidir. Sağlanan tüm içerikler ve mentörlük hizmetleri &quot;olduğu gibi&quot; sunulmaktadır. Platform, mentörler tarafından sağlanan bilgilerin doğruluğunu garanti etmez.</p>
         </section>
 
         <section>
