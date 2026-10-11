@@ -9,7 +9,7 @@ const pathways = [
 export default function Home() {
   return (
     <div className="animate-fade-in">
-      <section className="tech-grid relative overflow-hidden">
+      <section id="home" className="tech-grid home-hero-grid scroll-mt-24 relative overflow-hidden">
         <div className="mx-auto grid max-w-7xl items-center gap-14 px-4 pb-20 pt-14 sm:px-6 sm:pb-28 sm:pt-20 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8 lg:px-8 lg:py-24">
           <div className="relative z-10 max-w-2xl">
             <div className="inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-accent">
@@ -101,7 +101,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 pb-20 sm:px-6 lg:px-8 lg:pb-28">
+      <section id="journey" className="mx-auto max-w-7xl scroll-mt-24 px-4 pb-20 sm:px-6 lg:px-8 lg:pb-28">
         <div className="mb-8 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">Yolculuğun nasıl başlar?</p>
@@ -125,7 +125,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 pb-20 sm:px-6 lg:px-8 lg:pb-28">
+      <section id="mentor-application" className="mx-auto max-w-7xl scroll-mt-24 px-4 pb-20 sm:px-6 lg:px-8 lg:pb-28">
         <div className="relative overflow-hidden rounded-[2rem] border border-border/80 bg-surface/80 px-6 py-10 text-foreground shadow-2xl backdrop-blur-xl sm:px-10 sm:py-12 lg:px-14">
           <div className="absolute -right-20 -top-40 h-96 w-96 rounded-full bg-accent/20 blur-3xl" />
           <div className="absolute bottom-[-11rem] right-[28%] h-80 w-80 rounded-full bg-cyan/10 blur-3xl" />

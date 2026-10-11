@@ -5,8 +5,13 @@ export const metadata = {
   title: "Mentörler",
 };
 
-export default async function MentorsPage() {
-  const mentors = await getMentors();
+interface MentorsPageProps {
+  searchParams: Promise<{ q?: string | string[] }>;
+}
+
+export default async function MentorsPage({ searchParams }: MentorsPageProps) {
+  const [{ q }, mentors] = await Promise.all([searchParams, getMentors()]);
+  const initialQuery = Array.isArray(q) ? q[0] ?? "" : q ?? "";
 
   return (
     <div className="animate-fade-in mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
@@ -22,7 +27,7 @@ export default async function MentorsPage() {
       </div>
 
       <div className="mt-10">
-        <MentorsView mentors={mentors} />
+        <MentorsView mentors={mentors} initialQuery={initialQuery} />
       </div>
     </div>
   );

@@ -21,11 +21,11 @@ export default function AboutPage() {
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-cyan">Neye inanıyoruz</p>
           <div className="mt-5 space-y-5 text-sm leading-7 text-muted-foreground sm:text-base">
             <p>Mentörler uzmanlık alanlarında zamanlarını gönüllü olarak ayırırlar. Öğrenciler profillere göz atabilir, doğrudan başvurabilir veya ortak ilgi alanlarına dayalı olarak en uygun kişiyi bulmak için eşleştirme aracımızı kullanabilirler.</p>
-            <p>Mentörlüğün erişilebilir, insani ve engelsiz olması gerektiğine inanıyoruz. Onay kuyrukları yok, ödeme duvarları yok — sadece anlamlı bağlantılar.</p>
+        <p>Mentörlüğün erişilebilir, insani ve engelsiz olması gerektiğine inanıyoruz. Onay kuyrukları yok, ödeme duvarları yok — sadece anlamlı bağlantılar var.</p>
           </div>
         </article>
 
-        <aside className="relative overflow-hidden rounded-[2rem] border border-border/80 bg-surface/80 p-6 text-foreground shadow-xl backdrop-blur-xl sm:p-9">
+        <aside id="exploration" className="relative scroll-mt-24 overflow-hidden rounded-[2rem] border border-border/80 bg-surface/80 p-6 text-foreground shadow-xl backdrop-blur-xl sm:p-9">
           <div className="absolute -bottom-24 -right-16 h-64 w-64 rounded-full bg-cyan/15 blur-3xl" />
           <p className="relative text-xs font-semibold uppercase tracking-[0.18em] text-accent">Keşif alanları</p>
           <div className="relative mt-5 grid grid-cols-2 gap-3">

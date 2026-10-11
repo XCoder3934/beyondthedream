@@ -3,8 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { useTheme } from "next-themes";
-import { Sun, Moon, Search } from "lucide-react";
+import { Search } from "lucide-react";
 import { useAuth } from "@/components/AuthProvider";
 import { AccountMenu } from "@/components/AccountMenu";
 import { Button } from "@/components/ui/Button";
@@ -55,15 +54,18 @@ export function Navbar() {
         </nav>
 
         <div className="hidden items-center gap-2 md:flex">
-          <div className="relative mr-1">
-            <Search className="absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" />
+          <form action="/search" method="get" role="search" className="relative mr-1">
+            <button type="submit" aria-label="Sitede ara" className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground transition-colors hover:text-accent">
+              <Search className="h-3.5 w-3.5" aria-hidden="true" />
+            </button>
             <input
               type="search"
-              placeholder="Ara..."
+              name="q"
+              aria-label="Sitede ara"
+              placeholder="Sitede ara..."
               className="h-9 w-36 rounded-xl border border-border/70 bg-surface/60 pl-9 pr-3 text-xs outline-none transition-all placeholder:text-muted-foreground/70 focus:w-44 focus:border-accent/50 focus:bg-surface"
             />
-          </div>
-          <ThemeToggle />
+          </form>
           {authLoading ? (
             <span className="h-9 w-24 animate-pulse rounded-xl bg-muted/70" aria-label="Hesap yükleniyor" />
           ) : user ? (
@@ -113,16 +115,19 @@ export function Navbar() {
 
       {mobileOpen && (
         <div className="border-t border-border/70 bg-background/95 px-4 py-4 backdrop-blur-2xl md:hidden animate-fade-in">
-          <div className="mb-4 flex items-center gap-2">
-            <div className="relative flex-1">
-              <Search className="absolute left-2.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+          <div className="mb-4">
+            <form action="/search" method="get" role="search" className="relative" onSubmit={() => setMobileOpen(false)}>
+              <button type="submit" aria-label="Sitede ara" className="absolute left-2.5 top-1/2 -translate-y-1/2 text-muted-foreground transition-colors hover:text-accent">
+                <Search className="h-4 w-4" aria-hidden="true" />
+              </button>
               <input
                 type="search"
-                placeholder="Ara..."
+                name="q"
+                aria-label="Sitede ara"
+                placeholder="Sitede ara..."
                 className="h-10 w-full rounded-xl border border-border/70 bg-surface/70 pl-9 pr-3 text-sm outline-none transition-colors focus:border-accent focus:bg-surface"
               />
-            </div>
-            <ThemeToggle />
+            </form>
           </div>
           <nav className="flex flex-col gap-1">
             {links.map((link) => (
@@ -164,20 +169,5 @@ export function Navbar() {
         </div>
       )}
     </header>
-  );
-}
-
-function ThemeToggle() {
-  const { resolvedTheme, setTheme } = useTheme();
-
-  return (
-    <button
-      onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-      className="relative inline-flex h-9 w-9 items-center justify-center rounded-xl border border-border/70 bg-surface/70 text-muted-foreground transition-colors hover:border-accent/40 hover:bg-accent/5 hover:text-foreground"
-      aria-label="Tema değiştir"
-    >
-      <Sun className="h-4 w-4 scale-100 dark:scale-0 transition-transform" />
-      <Moon className="absolute h-4 w-4 scale-0 dark:scale-100 transition-transform" />
-    </button>
   );
 }

@@ -2,8 +2,9 @@
 
 import { useEffect, useRef, useState, type ChangeEvent, type FormEvent } from "react";
 import { createPortal } from "react-dom";
+import { useTheme } from "next-themes";
 import type { User } from "@supabase/supabase-js";
-import { Camera, ChevronDown, LogOut, LockKeyhole, Mail, Sparkles, X } from "lucide-react";
+import { Camera, ChevronDown, LogOut, LockKeyhole, Mail, Monitor, Moon, Sparkles, Sun, X } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 
 interface AccountMenuProps {
@@ -35,7 +36,9 @@ function getInitials(name: string) {
 }
 
 export function AccountMenu({ user, onSignOut }: AccountMenuProps) {
+  const { theme, setTheme } = useTheme();
   const [open, setOpen] = useState(false);
+  const [themeMounted, setThemeMounted] = useState(false);
   const [displayName, setDisplayName] = useState(() => getDisplayName(user));
   const [avatarUrl, setAvatarUrl] = useState<string | null>(() =>
     typeof user.user_metadata.avatar_path === "string" ? null : getExternalAvatarUrl(user),
@@ -59,6 +62,10 @@ export function AccountMenu({ user, onSignOut }: AccountMenuProps) {
   const avatarPath = user.user_metadata.avatar_path;
   const externalAvatarUrl = getExternalAvatarUrl(user);
   const initials = getInitials(getDisplayName(user));
+
+  useEffect(() => {
+    setThemeMounted(true);
+  }, []);
 
   useEffect(() => {
     let active = true;
@@ -384,6 +391,30 @@ export function AccountMenu({ user, onSignOut }: AccountMenuProps) {
 
           <div className="space-y-3 border-b border-border py-4">
             <p className="text-xs font-medium text-muted-foreground">Hesap ve kişiselleştirme</p>
+            <div className="px-2 pt-1">
+              <p className="mb-2 text-xs text-muted-foreground">Tema</p>
+              <div role="group" aria-label="Tema seçimi" className="grid grid-cols-3 gap-1 rounded-xl border border-border/70 bg-background/50 p-1">
+                {[
+                  { value: "light", label: "Açık", Icon: Sun },
+                  { value: "dark", label: "Koyu", Icon: Moon },
+                  { value: "system", label: "Sistem", Icon: Monitor },
+                ].map(({ value, label, Icon }) => {
+                  const selected = themeMounted && theme === value;
+                  return (
+                    <button
+                      key={value}
+                      type="button"
+                      aria-pressed={selected}
+                      onClick={() => setTheme(value)}
+                      className={`flex flex-col items-center justify-center gap-1 rounded-lg px-2 py-2 text-[11px] transition-colors ${selected ? "bg-accent/15 text-accent" : "text-muted-foreground hover:bg-muted hover:text-foreground"}`}
+                    >
+                      <Icon className="h-4 w-4" aria-hidden="true" />
+                      {label}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
             <button type="button" onClick={() => openDialog("email")} className="flex w-full items-center gap-2 rounded-lg px-2 py-2 text-left text-sm text-foreground transition-colors hover:bg-muted">
               <Mail className="h-4 w-4 text-muted-foreground" aria-hidden="true" />
               <span className="flex-1">E-posta adresini değiştir</span>
@@ -399,7 +430,6 @@ export function AccountMenu({ user, onSignOut }: AccountMenuProps) {
               <span className="flex-1">Animasyonları azalt</span>
               <input type="checkbox" checked={reducedMotion} onChange={toggleReducedMotion} className="h-4 w-4 accent-[var(--accent)]" />
             </label>
-            <p className="px-2 text-[11px] text-muted-foreground">Tercih bu tarayıcıda saklanır.</p>
           </div>
 
           {(feedback || error) && (

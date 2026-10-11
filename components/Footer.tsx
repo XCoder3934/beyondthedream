@@ -13,7 +13,7 @@ export function Footer() {
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[1.2fr_0.8fr] lg:px-8 lg:py-16">
 
         {/* Contact Section */}
-        <div>
+        <div id="contact" className="scroll-mt-24">
           {/* Flex container to align Title and Instagram Icon side-by-side */}
           <div className="flex items-center gap-4">
             <h2 className="text-lg font-semibold tracking-tight">İletişim</h2>
